@@ -54,13 +54,13 @@ c_user.each do |user|
 end
 
 execute 'UserDelete batch' do
-user 'root'
-cwd '/usr/local/vpnserver'
-command "exec ./vpncmd /server #{node[:ipaddress]} /password:#{admin_pass["adminpassword"]} /adminhub:#{node[:softether][:hub][:name]} /in:userdel.txt"
+    user 'root'
+    cwd '/usr/local/vpnserver'
+    command "exec ./vpncmd /server #{node[:ipaddress]} /password:#{admin_pass["adminpassword"]} /adminhub:#{node[:softether][:hub][:name]} /in:userdel.txt"
 end
 
 execute 'delete files' do
-  user 'root'
-  cwd '/tmp'
-  command "rm -rf user.txt userdel.txt /tmp/createduserslist.txt"
+    user 'root'
+    cwd '/tmp'
+    command "rm -rf user.txt userdel.txt /tmp/createduserslist.txt"
 end
